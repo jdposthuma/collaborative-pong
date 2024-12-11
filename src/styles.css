@@ -1,0 +1,19 @@
+/* Reset default margins and ensure the canvas is centered */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222; /* Darker gray background */
+  }
+  
+  canvas {
+    display: block;
+    margin: 3em;
+    box-sizing: border-box;
+    background: #333; /* Dark gray canvas */
+  }
+  
