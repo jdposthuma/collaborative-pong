@@ -1,19 +1,61 @@
 /* Reset default margins and ensure the canvas is centered */
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #222; /* Darker gray background */
-  }
-  
-  canvas {
-    display: block;
-    margin: 3em;
-    box-sizing: border-box;
-    background: #333; /* Dark gray canvas */
-  }
-  
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #222;
+  /* Darker gray background */
+  font-family: 'Press Start 2P', cursive;
+}
+
+canvas {
+  display: block;
+  margin: 3em;
+  box-sizing: border-box;
+  background: #333;
+  /* Dark gray canvas */
+}
+
+/* Title Styling */
+#game-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin: 1em 0;
+  color: #ff00ff; /* Retro pink */
+  text-shadow: 
+    0 0 3px #ff00ff, 
+    0 0 7px #ff00ff, 
+    0 0 15px #ff0080; /* Subtle glow effect */
+}
+
+/* Game Info Styling */
+#game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+  gap: 2em;
+  padding: 0 3rem;
+}
+
+#lives {
+  font-size: 1.5em;
+}
+
+.heart {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5em; /* Adjust size for consistency */
+  color: white;
+  vertical-align: middle; /* Align nicely with text */
+}
+
+#level {
+  font-size: 1.2em;
+  color: white;
+}

@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TypeScript Pong</title>
+  <title>Collaborative Pong</title>
+  <link href="//fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
-  <style>
-    canvas {
-      display: block;
-      margin: 0 auto;
-      background: black;
-    }
-  </style>
 </head>
+
 <body>
-  <canvas id="pongCanvas" width="800" height="600"></canvas>
-  <!-- <script type="module" src="./pongGame.ts"></script> -->
+  <header>
+    <!-- Game Title -->
+    <h1 id="game-title">Pong Game</h1>
+  </header>
+  <div id="canvasWrapper">
+    <!-- Lives and Level Indicator -->
+    <div id="game-info">
+      <div id="level">Level: 1</div>
+      <div id="lives">
+        <span class="heart">♥</span>
+        <span class="heart">♥</span>
+        <span class="heart">♥</span>
+      </div>
+    </div>
+    <canvas id="pongCanvas" width="800" height="600"></canvas>
+  </div>
+
   <script type="module">
     import { PongGame } from './pongGame.ts';
-
     const canvas = document.getElementById('pongCanvas');
     const game = new PongGame(canvas);
     game.start();
   </script>
 </body>
+
 </html>
