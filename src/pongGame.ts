@@ -25,7 +25,7 @@ export class PongGame {
     // Load the background image
     this.backgroundImage = new Image();
     // TODO: publish with build
-    this.backgroundImage.src = 'background.png'; // Replace with your image path
+    this.backgroundImage.src = 'assets/background.png'; // Replace with your image path
     this.backgroundImage.onload = () => this.draw(); // Redraw once the image is loaded
 
     this.registerInputListeners();

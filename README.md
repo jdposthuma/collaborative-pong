@@ -1,8 +1,11 @@
+## Housekeeping
+- [] Test cases
+- [] React?
 
 ## Chrome
 - Popup
 - Hearts
-- levels
+- levels (chevrons)
 - title
 
 ## Gameplay
