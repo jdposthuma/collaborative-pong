@@ -4,7 +4,7 @@
   "scripts": {
     "start": "parcel src/index.html & npm run build-assets",
     "build": "parcel build src/index.html --public-url ./",
-    "build-assets": "mkdir -p dist/assets && cp -r assets/ dist/assets",
+    "build-assets": "cp -r assets/ dist/",
     "clean": "rm -rf dist && rm -rf build"
   },
   "keywords": [],
