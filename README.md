@@ -14,6 +14,9 @@
     - acceleration after hit
 
 ## Tech
-- [] github actions
-- [] AWS Cloudfront
-- [] CDKTF
+- [x] Github actions
+- [x] Github pages
+
+## Bugs
+- [] Scroll bar and title incorrect
+- [] assets bundling
