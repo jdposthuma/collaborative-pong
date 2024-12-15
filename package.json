@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "parcel src/index.html & npm run build-assets",
-    "build": "parcel build src/index.html && npm run build-assets",
+    "build": "parcel build src/index.html --public-url ./",
     "build-assets": "mkdir -p dist/assets && cp -r assets/ dist/assets",
     "clean": "rm -rf dist && rm -rf build"
   },

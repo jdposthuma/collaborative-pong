@@ -39,6 +39,9 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Copy assets
+        run: npm run build-assets
+
       - name: Copy to build directory
         run: mkdir -p ./build && mv ./dist ./build
 
