@@ -195,7 +195,7 @@ export class PongGame {
       this.context.fillStyle = '#443322'; // Dark gray
       this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
-    
+
 
     // Reveal the grid cells
     this.drawGrid();
@@ -226,8 +226,12 @@ export class PongGame {
 
   private resizeCanvas() {
     const margin = 48; // 3em in pixels
+    const header = document.getElementById('header');
+    const headerHeight = header?.offsetHeight || 0;
+    const gameInfo = document.getElementById('game-info');
+    const gameInfoHeight = gameInfo?.offsetHeight || 0;
     const availableWidth = window.innerWidth - margin * 2;
-    const availableHeight = window.innerHeight - margin * 2;
+    const availableHeight = window.innerHeight - headerHeight - gameInfoHeight - margin * 2;
 
     // Maintain 16:9 aspect ratio
     if (availableWidth / availableHeight > 16 / 9) {

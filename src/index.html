@@ -10,11 +10,11 @@
 </head>
 
 <body>
-  <header>
+  <header id="header">
     <!-- Game Title -->
-    <h1 id="game-title">Pong Game</h1>
+    <h1 id="game-title">Collaborative Pong</h1>
   </header>
-  <div id="canvasWrapper">
+  <div id="canvas-wrapper">
     <!-- Lives and Level Indicator -->
     <div id="game-info">
       <div id="level">Level: 1</div>
@@ -24,12 +24,12 @@
         <span class="heart">♥</span>
       </div>
     </div>
-    <canvas id="pongCanvas" width="800" height="600"></canvas>
+    <canvas id="pong-canvas" width="800" height="600"></canvas>
   </div>
 
   <script type="module">
     import { PongGame } from './pongGame.ts';
-    const canvas = document.getElementById('pongCanvas');
+    const canvas = document.getElementById('pong-canvas');
     const game = new PongGame(canvas);
     game.start();
   </script>

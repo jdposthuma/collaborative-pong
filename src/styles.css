@@ -7,11 +7,23 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background: #222;
   /* Darker gray background */
   font-family: 'Press Start 2P', cursive;
+}
+
+header {
+  width: 100%;
+  background: rebeccapurple;
+  /* Dark gray background */
+  padding: 1em 0;
+  text-align: center;
+}
+
+#canvas-wrapper {
+  background-color: navy;
 }
 
 canvas {

@@ -1,22 +1,25 @@
 ## Housekeeping
-- [] Test cases
-- [] React?
+[x] Test cases
+[] React?
+[] Badges, build, coverage
+[] Favicon
 
 ## Chrome
-- Popup
-- Hearts
-- levels (chevrons)
-- title
+[] Popup
+[] ~~Hearts~~
+[] levels (chevrons)
+[x] title
 
 ## Gameplay
-- Spinning ball
-- Physics?
-    - acceleration after hit
+[] Spinning ball
+[] Increase speed on levels
+[] Physics?
+    [] acceleration after hit
 
 ## Tech
-- [x] Github actions
-- [x] Github pages
+[x] Github actions
+[x] Github pages
 
 ## Bugs
-- [] Scroll bar and title incorrect
-- [] assets bundling
+[x] Scroll bar and title incorrect
+[] assets bundling
