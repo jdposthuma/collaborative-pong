@@ -200,6 +200,7 @@ export class PongGame {
     this.context.globalCompositeOperation = 'destination-out';
 
     // Reveal touched cells
+    this.context.fillStyle = 'rgba(0, 0, 0, 1)'; // Semi-transparent white
     var isLevelComplete = true;
     for (let row = 0; row < 9; row++) {
       for (let col = 0; col < 16; col++) {
@@ -231,16 +232,16 @@ export class PongGame {
     }
 
     // Draw the dark gray overlay
-    if (this.isPaused) {
-      this.context.fillStyle = '#443322'; // Dark gray
-      this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
-    }
+    // if (this.isPaused) {
+    //   this.context.fillStyle = '#443322'; // Dark gray
+    //   this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    // }
 
 
     // Reveal the grid cells
     this.drawGrid();
     // Reset compositing to default
-    this.context.globalCompositeOperation = 'source-over';
+    // this.context.globalCompositeOperation = 'source-over';
 
     // Draw paddles
     this.context.fillStyle = 'white';
