@@ -1,25 +1,26 @@
-## Housekeeping
+## Todo
 [x] Test cases
 [] React?
 [] Badges, build, coverage
 [] Favicon
+[] Protect master, run test cases on PR
 
-## Chrome
+### Chrome
 [] Popup
 [] ~~Hearts~~
 [] levels (chevrons)
 [x] title
 
-## Gameplay
+### Gameplay
 [] Spinning ball
 [] Increase speed on levels
 [] Physics?
     [] acceleration after hit
 
-## Tech
+### Tech
 [x] Github actions
 [x] Github pages
 
-## Bugs
+### Bugs
 [x] Scroll bar and title incorrect
 [] assets bundling
