@@ -25,6 +25,7 @@ export class PongGame {
 
     this.backgroundImage = new Image();
     this.loadLevel(this.highestLevelAttempted );
+    this.loadState();
 
     this.registerInputListeners();
     this.positionPaddles();
@@ -45,9 +46,19 @@ export class PongGame {
     });
   }
 
+  private persisteState() {
+    localStorage.setItem('highestLevelAttempted', this.highestLevelAttempted.toString());
+  }
+
+  private loadState() {
+    const highestLevelAttempted = localStorage.getItem('highestLevelAttempted');
+      this.highestLevelAttempted = highestLevelAttempted ? parseInt(highestLevelAttempted) : 1;
+  }
+
   private loadLevel(level: number) {
     this.currentLevel = level;
     this.highestLevelAttempted = Math.max(this.highestLevelAttempted, this.currentLevel);
+    this.persisteState();
 
     const nav = document.querySelector('.breadcrumb');
     const links = nav?.querySelectorAll('a');
