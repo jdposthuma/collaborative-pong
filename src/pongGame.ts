@@ -9,7 +9,9 @@ export class PongGame {
   private rightPaddle = { x: 780, y: 250, dy: 0 };
   private ball = { x: 400, y: 300, dx: 3, dy: 3 };
 
-  private grid: boolean[][]; // 2D array to store grid state
+  private grid: boolean[][] = Array.from({ length: 9 }, () => Array(16).fill(false));; // 2D array to store grid state
+  private highestLevelAttempted = 1;
+  private currentLevel = 1;
 
   private isPaused: boolean;
   private showPlaySymbol: boolean; // Controls whether the play symbol is visible
@@ -20,13 +22,9 @@ export class PongGame {
     this.canvas = canvas;
     this.context = canvas.getContext('2d')!;
     this.resizeCanvas();
-    this.grid = Array.from({ length: 9 }, () => Array(16).fill(false));
 
-    // Load the background image
     this.backgroundImage = new Image();
-    // TODO: publish with build
-    this.backgroundImage.src = 'assets/background-level-01.png'; // Replace with your image path
-    this.backgroundImage.onload = () => this.draw(); // Redraw once the image is loaded
+    this.loadLevel(this.highestLevelAttempted );
 
     this.registerInputListeners();
     this.positionPaddles();
@@ -41,18 +39,31 @@ export class PongGame {
 
     document.querySelectorAll('.breadcrumb a').forEach((link, index) => {
       link.addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent default link behavior
-        console.log(`Level ${index + 1} clicked`);
-
-        // Load the background image
-        this.backgroundImage = new Image();
-        // TODO: publish with build
-        this.backgroundImage.src = `assets/background-level-0${index+1}.png`; // Replace with your image path
-        this.backgroundImage.onload = () => this.draw(); // Redraw once the image is loaded
-        this.grid = Array.from({ length: 9 }, () => Array(16).fill(false));
-        // TODO: Reset ball position
+        event.preventDefault();
+        this.loadLevel(index + 1);
       });
     });
+  }
+
+  private loadLevel(level: number) {
+    this.currentLevel = level;
+    this.highestLevelAttempted = Math.max(this.highestLevelAttempted, this.currentLevel);
+
+    const nav = document.querySelector('.breadcrumb');
+    const links = nav?.querySelectorAll('a');
+
+    links?.forEach((link, index) => {
+      if (index + 1 <= this.highestLevelAttempted) {
+        link.classList.remove('disabled'); // Enable the link
+      } else {
+        link.classList.add('disabled'); // Disable the link
+      }
+    });
+
+    this.backgroundImage.src = `assets/background-level-${this.currentLevel}.png`; // Replace with your image path
+    this.backgroundImage.onload = () => this.draw(); // Redraw once the image is loaded
+    this.resetGrid();
+    this.resetBall()
   }
 
   private drawPlaySymbol() {
@@ -70,11 +81,7 @@ export class PongGame {
     console.log(this.isPaused ? 'Game paused' : 'Game resumed');
 
     if (!this.isPaused) {
-      // Show the play symbol for 300ms when resuming
-      this.showPlaySymbol = true;
-      setTimeout(() => {
-        this.showPlaySymbol = false;
-      }, 300);
+      this.showPlaySymbol = false;
       this.start();
     }
   }
@@ -182,15 +189,22 @@ export class PongGame {
     this.context.globalCompositeOperation = 'destination-out';
 
     // Reveal touched cells
+    var isLevelComplete = true;
     for (let row = 0; row < 9; row++) {
       for (let col = 0; col < 16; col++) {
         if (!this.grid[row][col]) {
+          isLevelComplete = false;
           this.context.fillRect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
         } else {
           // this.context.fillStyle = '#443322'; // Dark gray
           // this.context.fillRect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
         }
       }
+    }
+
+    if (isLevelComplete) {
+      this.togglePause();
+      this.loadLevel(this.highestLevelAttempted + 1);
     }
 
     // Reset compositing to default

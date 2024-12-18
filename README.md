@@ -1,13 +1,15 @@
 ## Todo
 [] levels (chevrons)
+[] local state for levels
+[] reset button
 [] Popup
-[] Spinning ball
-[] Increase speed on levels
-[] Physics?
-    [] acceleration after hit
-[] Protect master, run test cases on PR
 [] Recolor
 [] Find images
+[] Physics?
+    [] Increase speed on levels
+    [] Spinning ball
+    [] acceleration after hit
+[] Protect master, run test cases on PR
 [x] Favicon
 [x] title
 [x] Test cases

@@ -71,17 +71,6 @@ canvas {
   font-size: 1.2em;
   color: white;
 }
-/* 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
-} */
 
 .breadcrumb {
   display: flex;
@@ -99,6 +88,12 @@ body {
   font-size: 16px;
   clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%, 10% 50%);
   transition: background 0.3s ease;
+}
+
+.breadcrumb a.disabled {
+  color: gray;
+  pointer-events: none;
+  text-decoration: none; /* Optional, prevents underline */
 }
 
 .breadcrumb a:hover {
