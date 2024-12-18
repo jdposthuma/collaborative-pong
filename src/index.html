@@ -17,19 +17,30 @@
   <div id="canvas-wrapper">
     <!-- Lives and Level Indicator -->
     <div id="game-info">
-      <div id="level">Level: 1</div>
+      <nav class="breadcrumb">
+          <a href="#">01</a>
+          <a href="#">02</a>
+          <a href="#">03</a>
+          <a href="#">04</a>
+          <a href="#">05</a>
+          <a href="#">06</a>
+          <a href="#">07</a>
+          <a href="#">08</a>
+          <a href="#">09</a>
+          <a href="#">10</a>
+      </nav>
       <div id="lives">
         <span class="heart">♥</span>
         <span class="heart">♥</span>
         <span class="heart">♥</span>
       </div>
     </div>
-    <canvas id="pong-canvas" width="800" height="600"></canvas>
+    <canvas id="pongCanvas" width="800" height="600"></canvas>
   </div>
 
   <script type="module">
     import { PongGame } from './pongGame.ts';
-    const canvas = document.getElementById('pong-canvas');
+    const canvas = document.getElementById('pongCanvas');
     const game = new PongGame(canvas);
     game.start();
   </script>

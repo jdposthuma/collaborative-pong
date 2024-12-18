@@ -25,7 +25,7 @@ export class PongGame {
     // Load the background image
     this.backgroundImage = new Image();
     // TODO: publish with build
-    this.backgroundImage.src = 'assets/background.png'; // Replace with your image path
+    this.backgroundImage.src = 'assets/background-level-01.png'; // Replace with your image path
     this.backgroundImage.onload = () => this.draw(); // Redraw once the image is loaded
 
     this.registerInputListeners();
@@ -37,6 +37,21 @@ export class PongGame {
     window.addEventListener('resize', () => {
       this.resizeCanvas();
       this.positionPaddles();
+    });
+
+    document.querySelectorAll('.breadcrumb a').forEach((link, index) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent default link behavior
+        console.log(`Level ${index + 1} clicked`);
+
+        // Load the background image
+        this.backgroundImage = new Image();
+        // TODO: publish with build
+        this.backgroundImage.src = `assets/background-level-0${index+1}.png`; // Replace with your image path
+        this.backgroundImage.onload = () => this.draw(); // Redraw once the image is loaded
+        this.grid = Array.from({ length: 9 }, () => Array(16).fill(false));
+        // TODO: Reset ball position
+      });
     });
   }
 

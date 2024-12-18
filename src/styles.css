@@ -71,3 +71,51 @@ canvas {
   font-size: 1.2em;
   color: white;
 }
+/* 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+} */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.breadcrumb a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  background: #0074d9;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%, 10% 50%);
+  transition: background 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  background: #005bb5;
+}
+
+.breadcrumb a:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 20px;
+  height: 100%;
+  background: #f4f4f4;
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+
+.breadcrumb a:last-child {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 90% 100%, 0% 100%, 10% 50%);
+}
