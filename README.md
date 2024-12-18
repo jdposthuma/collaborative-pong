@@ -1,26 +1,20 @@
 ## Todo
-[x] Test cases
-[] React?
-[] Badges, build, coverage
-[] Favicon
-[] Protect master, run test cases on PR
-
-### Chrome
-[] Popup
-[] ~~Hearts~~
 [] levels (chevrons)
-[x] title
-
-### Gameplay
+[] Popup
 [] Spinning ball
 [] Increase speed on levels
 [] Physics?
     [] acceleration after hit
-
-### Tech
+[] Protect master, run test cases on PR
+[] Recolor
+[] Find images
+[x] Favicon
+[x] title
+[x] Test cases
 [x] Github actions
 [x] Github pages
-
-### Bugs
 [x] Scroll bar and title incorrect
+[] move favicon to assets
+[] Badges, build, coverage
 [] assets bundling
+[] React?
