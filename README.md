@@ -1,12 +1,14 @@
 ## Todo
-[] Find images
-[] reset button
-[] Popup
+[...] reset button
+[] Fix bug in which you can't see the image
 [] Recolor
+[] Popup
+[] fix image load bug
 [] Physics?
     [] Increase speed on levels
     [] Spinning ball
     [] acceleration after hit
+[x] Find images
 [] Protect master, run test cases on PR
 [x] levels (chevrons)
 [x] local state for levels

@@ -24,7 +24,7 @@ export class PongGame {
     this.resizeCanvas();
 
     this.backgroundImage = new Image();
-    this.loadLevel(this.highestLevelAttempted );
+    this.loadLevel(this.highestLevelAttempted);
     this.loadState();
 
     this.registerInputListeners();
@@ -44,6 +44,11 @@ export class PongGame {
         this.loadLevel(index + 1);
       });
     });
+
+    // Show popup automatically when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      this.createPopup("Welcome to Collaborative Pong. Player 1 (left) controls the paddle with 'w' and 's'. Player 2 (right) uses the arrow keys.", 'Play');
+    });
   }
 
   private persisteState() {
@@ -52,7 +57,7 @@ export class PongGame {
 
   private loadState() {
     const highestLevelAttempted = localStorage.getItem('highestLevelAttempted');
-      this.highestLevelAttempted = highestLevelAttempted ? parseInt(highestLevelAttempted) : 1;
+    this.highestLevelAttempted = highestLevelAttempted ? parseInt(highestLevelAttempted) : 1;
   }
 
   private loadLevel(level: number) {
@@ -294,6 +299,31 @@ export class PongGame {
     this.rightPaddle.x = this.canvas.width - this.paddleWidth; // Right paddle at the right edge
   }
 
+  private createPopup(message: string, closeButtonText: string): void {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'popup-overlay';
+
+    // Create popup content
+    const popup = document.createElement('div');
+    popup.className = 'popup';
+
+    // Close button
+    const closeButton = document.createElement('button');
+    closeButton.className = 'popup-close';
+    closeButton.innerText = closeButtonText;
+    closeButton.onclick = () => document.body.removeChild(overlay);
+
+    // Message
+    const content = document.createElement('p');
+    content.innerText = message;
+
+    // Append elements
+    popup.appendChild(content);
+    popup.appendChild(closeButton);
+    overlay.appendChild(popup);
+    document.body.appendChild(overlay);
+  }
 
   public start() {
     const gameLoop = () => {
