@@ -47,11 +47,19 @@ export class PongGame {
 
     // Show popup automatically when the page loads
     document.addEventListener('DOMContentLoaded', () => {
-      this.createPopup("Welcome to Collaborative Pong. Player 1 (left) controls the paddle with 'w' and 's'. Player 2 (right) uses the arrow keys.", 'Play');
+      this.createPopup("Welcome to Collaborative Pong!<br/><br/>Player 1 (left) controls the paddle with 'w' and 's'. Player 2 (right) uses the arrow keys.<br/><br/>Use space bar to start.", 'Play');
     });
+
+    const resetButton = document.getElementById('reset-button');
+    resetButton?.addEventListener('click', this.resetButtonClick);
   }
 
-  private persisteState() {
+  private resetButtonClick() {
+    localStorage.removeItem('highestLevelAttempted');
+    window.location.reload();
+  }
+
+  private persistState() {
     localStorage.setItem('highestLevelAttempted', this.highestLevelAttempted.toString());
   }
 
@@ -63,7 +71,7 @@ export class PongGame {
   private loadLevel(level: number) {
     this.currentLevel = level;
     this.highestLevelAttempted = Math.max(this.highestLevelAttempted, this.currentLevel);
-    this.persisteState();
+    this.persistState();
 
     const nav = document.querySelector('.breadcrumb');
     const links = nav?.querySelectorAll('a');
@@ -316,7 +324,7 @@ export class PongGame {
 
     // Message
     const content = document.createElement('p');
-    content.innerText = message;
+    content.innerHTML = message;
 
     // Append elements
     popup.appendChild(content);
