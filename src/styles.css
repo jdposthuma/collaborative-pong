@@ -97,6 +97,11 @@ button.secondary {
   transition: background 0.3s ease;
 }
 
+.breadcrumb a.active, .breadcrumb a.active::after {
+  color: #ccc;
+  background: #ff00ff;
+}
+
 .breadcrumb a.disabled {
   color: gray;
   pointer-events: none;

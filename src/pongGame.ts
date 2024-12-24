@@ -27,8 +27,8 @@ export class PongGame {
     this.resizeCanvas();
 
     this.backgroundImage = new Image();
-    this.loadLevel(this.highestLevelAttempted);
     this.loadState();
+    this.loadLevel(this.highestLevelAttempted);
 
     this.registerInputListeners();
     this.positionPaddles();
@@ -58,8 +58,7 @@ export class PongGame {
 
   }
 
-  private confetti() {
-    console.log('confetti button clicked');
+  private shootConfetti() {
     confetti({
       particleCount: 150,
       spread: 150,
@@ -99,6 +98,10 @@ export class PongGame {
         link.classList.remove('disabled'); // Enable the link
       } else {
         link.classList.add('disabled'); // Disable the link
+      }
+
+      if (index + 1 === this.currentLevel) {
+        link.classList.add('active'); // Highlight the current level
       }
     });
 
@@ -252,7 +255,7 @@ export class PongGame {
     if (isLevelComplete) {
       this.togglePause();
       this.isLevelComplete = true;
-      confetti();
+      this.shootConfetti();
     }
 
     // Reset compositing to default

@@ -3,6 +3,8 @@
     [] Increase speed on levels
     [] Spinning ball
     [] acceleration after hit
+[x] indicate current level
+[x] fix loss of history
 [x] Fix bug in which you can't see the image
 [x] Resize images
 [x] Confetti
