@@ -1,7 +1,6 @@
 ## Todo
 [] Physics?
     [] Increase speed on levels
-    [] Spinning ball
     [] acceleration after hit
 [x] indicate current level
 [x] fix loss of history

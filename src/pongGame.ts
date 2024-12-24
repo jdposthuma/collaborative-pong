@@ -102,6 +102,8 @@ export class PongGame {
 
       if (index + 1 === this.currentLevel) {
         link.classList.add('active'); // Highlight the current level
+      } else {
+        link.classList.remove('active');
       }
     });
 
