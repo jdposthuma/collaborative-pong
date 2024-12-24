@@ -8,6 +8,7 @@
   <link href="//fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- <link rel="preload" as="image" href="assets/background-level-1.png"> -->
 </head>
 
 <body>
@@ -30,11 +31,10 @@
           <a href="#">09</a>
           <a href="#">10</a>
       </nav>
-      <button id="reset-button">Reset Game</button>
+      <button id="reset-button" class="secondary">Reset</button>
     </div>
-    <canvas id="pongCanvas" width="800" height="600"></canvas>
+    <canvas id="pongCanvas" width="800" height="450"></canvas>
   </div>
-
   <script type="module">
     import { PongGame } from './pongGame.ts';
     const canvas = document.getElementById('pongCanvas');

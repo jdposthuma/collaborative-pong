@@ -1,3 +1,5 @@
+import confetti from 'canvas-confetti';
+
 export class PongGame {
   private canvas: HTMLCanvasElement;
   private context: CanvasRenderingContext2D;
@@ -12,6 +14,7 @@ export class PongGame {
   private grid: boolean[][] = Array.from({ length: 9 }, () => Array(16).fill(false));; // 2D array to store grid state
   private highestLevelAttempted = 1;
   private currentLevel = 1;
+  private isLevelComplete = false;
 
   private isPaused: boolean;
   private showPlaySymbol: boolean; // Controls whether the play symbol is visible
@@ -52,7 +55,19 @@ export class PongGame {
 
     const resetButton = document.getElementById('reset-button');
     resetButton?.addEventListener('click', this.resetButtonClick);
+
   }
+
+  private confetti() {
+    console.log('confetti button clicked');
+    confetti({
+      particleCount: 150,
+      spread: 150,
+      origin: { x: 0.5, y: 0.3 },
+      ticks: 500,
+    });
+  };
+
 
   private resetButtonClick() {
     localStorage.removeItem('highestLevelAttempted');
@@ -71,6 +86,9 @@ export class PongGame {
   private loadLevel(level: number) {
     this.currentLevel = level;
     this.highestLevelAttempted = Math.max(this.highestLevelAttempted, this.currentLevel);
+    if (this.currentLevel === this.highestLevelAttempted) {
+      this.isLevelComplete = false;
+    }
     this.persistState();
 
     const nav = document.querySelector('.breadcrumb');
@@ -102,9 +120,13 @@ export class PongGame {
 
   private togglePause() {
     this.isPaused = !this.isPaused;
-    console.log(this.isPaused ? 'Game paused' : 'Game resumed');
 
     if (!this.isPaused) {
+
+      if (this.isLevelComplete) {
+        this.loadLevel(this.currentLevel + 1);
+      }
+
       this.showPlaySymbol = false;
       this.start();
     }
@@ -229,7 +251,8 @@ export class PongGame {
 
     if (isLevelComplete) {
       this.togglePause();
-      this.loadLevel(this.highestLevelAttempted + 1);
+      this.isLevelComplete = true;
+      confetti();
     }
 
     // Reset compositing to default
@@ -244,17 +267,8 @@ export class PongGame {
       this.context.drawImage(this.backgroundImage, 0, 0, this.canvas.width, this.canvas.height);
     }
 
-    // Draw the dark gray overlay
-    // if (this.isPaused) {
-    //   this.context.fillStyle = '#443322'; // Dark gray
-    //   this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
-    // }
-
-
     // Reveal the grid cells
     this.drawGrid();
-    // Reset compositing to default
-    // this.context.globalCompositeOperation = 'source-over';
 
     // Draw paddles
     this.context.fillStyle = 'white';
@@ -272,7 +286,6 @@ export class PongGame {
       this.drawPlaySymbol();
     }
   }
-
 
   private resetGrid() {
     this.grid = Array.from({ length: 9 }, () => Array(16).fill(false));
