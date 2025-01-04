@@ -8,38 +8,31 @@
   <link href="//fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <!-- <link rel="preload" as="image" href="assets/background-level-1.png"> -->
 </head>
 
 <body>
-  <header id="header">
-    <!-- Game Title -->
-    <h1 id="game-title">Collaborative Pong</h1>
-  </header>
-  <div id="canvas-wrapper">
-    <!-- Lives and Level Indicator -->
-    <div id="game-info">
-      <nav class="breadcrumb">
-          <a href="#">01</a>
-          <a href="#">02</a>
-          <a href="#">03</a>
-          <a href="#">04</a>
-          <a href="#">05</a>
-          <a href="#">06</a>
-          <a href="#">07</a>
-          <a href="#">08</a>
-          <a href="#">09</a>
-          <a href="#">10</a>
-      </nav>
-      <button id="reset-button" class="secondary">Reset</button>
-    </div>
-    <canvas id="pongCanvas" width="800" height="450"></canvas>
-  </div>
+  <div id="root"></div>
   <script type="module">
-    import { PongGame } from './pongGame.ts';
-    const canvas = document.getElementById('pongCanvas');
-    const game = new PongGame(canvas);
-    game.start();
+    import React from 'react';
+    import ReactDOM from 'react-dom/client';
+    import { PongGame } from './pongGame';
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+      <React.StrictMode>
+        <header id="header">
+          <h1 id="game-title">Collaborative Pong</h1>
+        </header>
+        <div id="game-info">
+          <nav class="breadcrumb">
+            {Array.from({ length: 10 }, (_, i) => (
+              <a href="#" key={i}>{String(i + 1).padStart(2, '0')}</a>
+            ))}
+          </nav>
+        </div>
+        <PongGame />
+      </React.StrictMode>
+    );
   </script>
 </body>
 

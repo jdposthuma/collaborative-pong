@@ -17,7 +17,8 @@
       "outDir": "./dist", // Specify the output directory for compiled files
       "rootDir": "./src", // Specify the root directory for input files
       "types": ["jest", "node"], // Include type definitions for Jest and Node.js
-      "lib": ["ESNext", "DOM"] // Include libraries for modern JavaScript and DOM APIs
+      "lib": ["ESNext", "DOM"], // Include libraries for modern JavaScript and DOM APIs
+      "jsx": "react"
     },
     "include": ["src/**/*"], // Include all TypeScript files in the src directory
     "exclude": ["node_modules", "dist"], // Exclude node_modules and output directory
